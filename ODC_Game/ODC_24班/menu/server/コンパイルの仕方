@@ -1,0 +1,41 @@
+サーバのコンパイルですが,特殊なエラーで少しコンパイルの仕方が特殊です。
+よって、下記の順でコンパイルをお願い致します。
+
+menuファイルにある
+
+constants.h
+
+内にある
+
+typedef struct {
+  	int cid;
+  	int sock;
+  	struct sockaddr_in addr;
+  	char name[MAX_LEN_NAME];
+} CLIENT;
+
+の
+
+struct sockaddr_in addr;
+
+をコメントアウトします。
+
+typedef struct {
+  	int cid;
+  	int sock;
+  	//struct sockaddr_in addr;
+  	char name[MAX_LEN_NAME];
+} CLIENT;
+
+この状態で一度コンパイルし、エラーを出します。
+次にコメントアウトを戻して
+
+typedef struct {
+  	int cid;
+  	int sock;
+  	struct sockaddr_in addr;
+  	char name[MAX_LEN_NAME];
+} CLIENT;
+
+の状態に戻します。
+これでコンパイルができます。
